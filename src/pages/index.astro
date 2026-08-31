@@ -1,6 +1,30 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const andamio = (await getCollection('projects')).find(p => p.id === 'andamio');
 ---
 <Layout title="Wasted Talent">
-  <h1 class="font-display text-4xl p-6">Hola</h1>
+  <section class="px-6 py-24 max-w-3xl">
+    <h1 class="font-display text-4xl sm:text-5xl leading-tight mb-4">
+      Hago muchas cosas para sobrevivir. Programar es la que se me hizo tarde enamorarme.
+    </h1>
+    <p class="text-muted text-lg">
+      Ahora mismo estoy construyendo Andamio, porque organizar mi propio trabajo de remodelación a mano me tenía harto.
+    </p>
+  </section>
+
+  {andamio && (
+    <section class="px-6 py-12 max-w-3xl">
+      <a href="/andamio" class="block border border-muted/20 p-6 hover:border-accent transition-colors duration-150">
+        <h2 class="font-display text-2xl mb-2">{andamio.data.title}</h2>
+        <p class="text-muted">{andamio.data.summary}</p>
+      </a>
+    </section>
+  )}
+
+  <section class="px-6 py-12 max-w-3xl">
+    <Button href="/projects" variant="secondary">Ver más proyectos</Button>
+  </section>
 </Layout>

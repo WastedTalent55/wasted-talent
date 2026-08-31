@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+const allProjects = await getCollection('projects');
+const others = allProjects.filter(p => p.id !== 'andamio');
+const projects = others.filter(p => p.data.kind === 'project');
+const experiments = others.filter(p => p.data.kind === 'experiment');
+---
+<Layout title="Projects & Lab — Wasted Talent">
+  <section class="px-6 py-16 max-w-4xl mx-auto">
+    <h1 class="font-display text-4xl mb-10">Projects & Lab</h1>
+
+    {projects.length > 0 && (
+      <div class="mb-12">
+        <h2 class="text-sm text-muted uppercase mb-4">Proyectos</h2>
+        <div class="grid gap-6 sm:grid-cols-2">
+          {projects.map(p => (
+            <a href={`/projects/${p.id}`} class="border border-muted/20 p-5 hover:border-accent transition-colors duration-150">
+              <h3 class="font-display text-lg mb-1">{p.data.title}</h3>
+              <p class="text-sm text-muted">{p.data.summary}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <div>
+      <h2 class="text-sm text-muted uppercase mb-4">Experimentos</h2>
+      <div class="grid gap-6 sm:grid-cols-2">
+        {experiments.map(p => (
+          <a href={`/projects/${p.id}`} class="border border-muted/20 p-5 hover:border-accent transition-colors duration-150">
+            <h3 class="font-display text-lg mb-1">{p.data.title}</h3>
+            <p class="text-sm text-muted">{p.data.summary}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
