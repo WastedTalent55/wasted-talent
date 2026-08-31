@@ -6,7 +6,7 @@ import Button from '../components/Button.astro';
 const project = await getEntry('projects', 'andamio') as CollectionEntry<'projects'>;
 const { Content } = await render(project);
 ---
-<Layout title="Andamio — Wasted Talent">
+<Layout title="Andamio — Wasted Talent" description="Una app para organizar cotizaciones y proyectos de remodelación freelance. Construida con Angular, Node.js y MySQL.">
   <section class="px-6 py-16 max-w-3xl mx-auto">
     <h1 class="font-display text-4xl mb-2">{project.data.title}</h1>
     <p class="text-muted mb-4">{project.data.summary}</p>
