@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wastedtalent55.github.io/wasted-talent/sitemap-index.xml
