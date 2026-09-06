@@ -3,21 +3,40 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 
+const base = import.meta.env.BASE_URL;
 const andamio = (await getCollection('projects')).find(p => p.id === 'andamio');
 ---
 <Layout title="Wasted Talent — Diego López" description="Portafolio de Diego López. Construyendo Andamio y otros proyectos mientras aprende desarrollo web.">
-  <section class="px-6 py-24 max-w-3xl">
-    <h1 class="font-display text-4xl sm:text-5xl leading-tight mb-4">
-      Hago muchas cosas para sobrevivir. Programar es la que se me hizo tarde enamorarme.
-    </h1>
-    <p class="text-muted text-lg">
-      Ahora mismo estoy construyendo Andamio, porque organizar mi propio trabajo de remodelación a mano me tenía harto.
-    </p>
+  <section class="relative grain px-6 py-24 max-w-6xl mx-auto grid lg:grid-cols-[1.3fr_1fr] gap-12 items-start">
+    <div>
+      <h1 class="font-display text-4xl sm:text-5xl leading-tight mb-4">
+        Hola! <span class="glitch" data-text="Soy Diego">Soy Diego</span>, siempre quiero saber cómo funciona. Y después, cómo podría funcionar mejor.
+      </h1>
+      <p class="text-muted text-lg">
+        Me gusta entender cómo funcionan las cosas y encontrar maneras de hacerlas funcionar mejor. He aprendido resolviendo problemas en contextos muy distintos, desde la cocina y la construcción hasta el desarrollo de software.
+      </p>
+    </div>
+
+    <div class="hidden lg:flex lg:flex-col gap-6">
+  <div class="border border-accent-light/30 p-6 font-mono text-xs text-muted">
+    <p class="text-accent-soft mb-3">// status</p>
+    <p class="mb-1">curiosidad: <span class="text-cream">activa</span></p>
+    <p class="mb-1">proyecto_actual: <span class="text-cream">andamio</span></p>
+    <p class="mb-1">modo: <span class="text-cream">construyendo</span></p>
+    <p class="mt-4 text-accent-soft">// última actualización</p>
+    <p>{new Date().toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+  </div>
+
+  <div class="watermark-logo flex-1 flex items-end justify-center min-h-[220px] px-4">
+    <img src={`${base}logo-full.png`} alt="" aria-hidden="true" class="w-full opacity-10 transition-all duration-300" />
+  </div>
+</div>
   </section>
 
   {andamio && (
     <section class="px-6 py-12 max-w-3xl">
-      <a href="/andamio" class="block border border-muted/20 p-6 hover:border-accent transition-colors duration-150">
+      <a href={`${base}andamio`} class="block border border-muted/20 p-6 hover:border-accent transition-colors duration-150">
+        <p class="font-mono text-xs text-accent-light mb-2">// 01 — proyecto actual</p>
         <h2 class="font-display text-2xl mb-2">{andamio.data.title}</h2>
         <p class="text-muted">{andamio.data.summary}</p>
       </a>
@@ -25,6 +44,6 @@ const andamio = (await getCollection('projects')).find(p => p.id === 'andamio');
   )}
 
   <section class="px-6 py-12 max-w-3xl">
-    <Button href="/projects" variant="secondary">Ver más proyectos</Button>
+    <Button href={`${base}projects`} variant="secondary">Ver más proyectos</Button>
   </section>
 </Layout>

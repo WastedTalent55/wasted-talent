@@ -2,6 +2,7 @@
 import { getEntry, render, type CollectionEntry } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
+import FlowDiagram from '../components/FlowDiagram.astro';
 
 const project = await getEntry('projects', 'andamio') as CollectionEntry<'projects'>;
 const { Content } = await render(project);
@@ -12,7 +13,7 @@ const { Content } = await render(project);
     <p class="text-muted mb-4">{project.data.summary}</p>
     <div class="flex gap-2 flex-wrap mb-8">
       {project.data.tags.map((tag: string) => (
-        <span class="text-xs border border-muted/40 px-2 py-1">{tag}</span>
+        <span class="text-xs border border-accent-soft/40 text-accent-soft px-2 py-1">{tag}</span>
       ))}
     </div>
     {project.data.repoUrl && (

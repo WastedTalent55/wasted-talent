@@ -1,14 +1,38 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const socials = [
+  { label: 'GitHub', href: 'https://github.com/wastedtalent55' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/diegolopezfed/' },
+  { label: 'Instagram', href: 'https://instagram.com/wastedtalent' },
+];
 ---
-<Layout title="Contact — Wasted Talent" description="Contacta a Diego López para oportunidades de desarrollo web o proyectos freelance."></Layout>
-  <section class="px-6 py-16 max-w-xl mx-auto text-center">
-    <h1 class="font-display text-4xl mb-4">Contact</h1>
-    <p class="text-muted mb-8">[Una línea invitando a escribirte]</p>
-    <div class="flex justify-center gap-4">
-      <Button href="mailto:tu-correo@ejemplo.com">Escríbeme</Button>
-      <Button href="/cv.pdf" variant="secondary">Descargar CV</Button>
+<Layout title="Contact — Wasted Talent" description="¿Tienes un problema interesante? Escríbele a Diego López.">
+  <section class="relative grain px-6 py-24 max-w-xl mx-auto text-center">
+    <p class="font-mono text-xs text-accent-light mb-4">// 04 — contacto</p>
+    <h1 class="glitch font-display text-4xl mb-4" data-text="¿Tienes un problema interesante?">
+      ¿Tienes un problema interesante?
+    </h1>
+    <p class="text-muted mb-10">
+      Cuéntame qué estás tratando de resolver. Tambien estoy abierto a ofertas laborales.
+    </p>
+    <div class="flex justify-center gap-4 flex-wrap mb-12">
+      <Button href="mailto:devdiego.lm@gmail.com">Escríbeme</Button>
+      <Button href={`${base}cv.pdf`} variant="secondary">Descargar CV</Button>
+    </div>
+
+    <div class="border-t border-accent-light/20 pt-8">
+      <p class="font-mono text-xs text-muted mb-4">// también aquí</p>
+      <div class="flex justify-center gap-6 text-sm">
+        {socials.map(social => (
+          <a href={social.href} class="hover:text-accent transition-colors duration-150">
+            {social.label}
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 </Layout>

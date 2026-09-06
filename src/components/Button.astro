@@ -6,8 +6,8 @@ interface Props {
 const { href, variant = 'primary' } = Astro.props;
 const base = "inline-block px-5 py-3 text-sm font-medium transition-colors duration-150";
 const styles = variant === 'primary'
-  ? "bg-accent text-cream hover:bg-accent/90"
-  : "border border-cream/40 text-cream hover:border-accent hover:text-accent";
+  ? "bg-accent text-black hover:bg-accent-soft"
+  : "border border-accent-light/60 text-cream hover:border-accent hover:text-accent";
 ---
 <a href={href} class={`${base} ${styles}`}>
   <slot />

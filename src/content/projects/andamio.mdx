@@ -1,0 +1,72 @@
+---
+title: "Andamio"
+summary: "Un sistema para convertir un proceso disperso en una herramienta organizada."
+tags: ["Angular", "TypeScript", "Node.js", "Express", "MySQL"]
+kind: "project"
+repoUrl: "https://github.com/WastedTalent55/andamioapp"
+featured: true
+---
+
+import FlowDiagram from '../../components/FlowDiagram.astro';
+import StatPanel from '../../components/StatPanel.astro';
+import ProjectImage from '../../components/ProjectImage.astro';
+
+## El problema
+Mientras trabajaba por mi cuenta en proyectos de remodelación, gran parte de la información terminaba dispersa entre conversaciones de WhatsApp, notas y archivos. Las solicitudes de los clientes, medidas, materiales, precios, cotizaciones y avances podían quedar en lugares diferentes.
+
+Además, crear una cotización significaba repetir información manualmente y actualizar precios podía convertirse rápidamente en un problema.
+
+Andamio nació de esa experiencia: quería construir una herramienta que ayudara a convertir el trabajo informal y disperso en un flujo más organizado, desde el primer contacto con un cliente hasta la ejecución del proyecto.
+
+## Qué construí
+Andamio centraliza el flujo de trabajo de un proyecto en una sola aplicación.
+El sistema permite registrar clientes y sus direcciones, agendar evaluaciones de trabajo, organizar proyectos mediante un tablero Kanban y generar cotizaciones a partir de la información recopilada durante el proceso.
+
+<ProjectImage
+  src="/public/images/andamio-kanban.png"
+  alt="Tablero Kanban de Andamio mostrando proyectos organizados por etapa"
+  caption="Tablero Kanban — organización de proyectos por etapa"
+/>
+
+También construí un editor de cotizaciones que permite gestionar materiales, mano de obra, descuentos, tiempos de entrega y condiciones, además de generar una vista previa lista para exportarse como PDF.
+
+<ProjectImage
+  src="/public/images/andamio-cotizacion.png"
+  alt="Editor de cotización de Andamio con materiales, mano de obra y descuentos"
+  caption="Editor de cotización"
+/>
+
+<ProjectImage
+  src="/images/andamio-pdf.png"
+  alt="Vista previa de cotización exportada como PDF"
+  caption="Exportación de cotización a PDF"
+/>
+
+La idea es que el flujo sea continuo:
+
+<FlowDiagram />
+
+En lugar de tener información repartida entre chats, notas y documentos, cada etapa queda relacionada dentro de la aplicación.
+
+## Decisiones técnicas
+Elegí Angular para el frontend porque quería trabajar con una arquitectura estructurada y componentes reutilizables, además de profundizar en TypeScript y en la construcción de aplicaciones más grandes que una página web tradicional.
+
+Para el backend utilicé Node.js y Express, creando una API REST para manejar autenticación, clientes, evaluaciones, cotizaciones y proyectos.
+
+MySQL fue la elección para la base de datos porque la información de Andamio tiene relaciones claras entre entidades: un cliente puede tener varias direcciones, una evaluación puede generar una cotización y una cotización puede formar parte del flujo de un proyecto.
+
+Uno de los retos más interesantes fue conectar todas estas piezas sin perder la relación entre las diferentes etapas del trabajo. También tuve que resolver aspectos como autenticación, manejo de formularios complejos, generación de cotizaciones, integración con mapas y comunicación entre frontend, backend y base de datos.
+
+## Estado actual
+Sigue en desarrollo activo. Todavía no tiene demo pública, pero puedes revisar el código y la evolución del proyecto en el repositorio.
+
+## Qué aprendí
+Andamio me enseñó que construir una aplicación no empieza necesariamente con una tecnología, sino con un problema que vale la pena resolver.
+
+También fue uno de mis primeros proyectos en los que tuve que pensar más allá de una interfaz: diseñar una base de datos relacional, construir una API, conectar diferentes módulos y mantener un flujo de información coherente entre ellos.
+
+El proyecto también me enseñó a enfrentar problemas reales de desarrollo por mi cuenta, investigar documentación, depurar errores y tomar decisiones técnicas sin tener siempre una respuesta prefabricada.
+
+Más que una aplicación terminada, Andamio representa mi proceso de pasar de aprender a programar a construir software para resolver problemas reales.
+
+<p class="glitch font-display text-2xl text-accent-light not-prose" data-text="Aprendí que el código más útil no es el más complejo, es el que resuelve el problema real.">Aprendí que el código más útil no es el más complejo, es el que resuelve el problema real.</p>
