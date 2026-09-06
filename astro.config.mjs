@@ -6,7 +6,7 @@ import mdx from '@astrojs/mdx';
 
 export default defineConfig({
   site: 'https://wastedtalent55.github.io',
-  base: '/wasted-talent',
+  base: '/wasted-talent/',
   integrations: [sitemap(), mdx()],
   vite: {
     plugins: [tailwindcss()],
