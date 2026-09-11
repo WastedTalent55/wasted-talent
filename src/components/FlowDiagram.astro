@@ -7,15 +7,15 @@ const steps = [
   { icon: '🔨', label: 'Ejecución' },
 ];
 ---
-<div class="flex flex-wrap items-center justify-center gap-2 py-6">
+<div class="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-2 py-6">
   {steps.map((step, i) => (
     <>
-      <div class="flex flex-col items-center border border-accent-light/30 px-4 py-3 min-w-[100px]">
+      <div class="flex flex-col items-center border border-accent-light/30 px-4 py-3 min-w-[100px] w-full sm:w-auto">
         <span class="text-xl mb-1">{step.icon}</span>
         <span class="font-mono text-xs text-accent-soft">{step.label}</span>
       </div>
       {i < steps.length - 1 && (
-        <span class="text-accent-light/50 font-mono text-lg">→</span>
+        <span class="text-accent-light/50 font-mono text-lg rotate-90 sm:rotate-0">→</span>
       )}
     </>
   ))}

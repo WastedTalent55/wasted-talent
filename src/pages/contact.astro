@@ -1,32 +1,60 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Button from '../components/Button.astro';
 
 const base = import.meta.env.BASE_URL;
 
 const socials = [
   { label: 'GitHub', href: 'https://github.com/wastedtalent55' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/diegolopezfed/' },
-  { label: 'Instagram', href: 'https://instagram.com/wastedtalent' },
+  { label: 'Instagram', href: 'https://instagram.com/TU_USUARIO_AQUI' },
+];
+
+const problemTypes = [
+  { label: 'Necesito una web o app', subject: 'Tengo un problema: necesito una web o app' },
+  { label: 'Quiero automatizar algo', subject: 'Tengo un problema: quiero automatizar algo' },
+  { label: 'No estoy seguro, pero es raro', subject: 'Tengo un problema raro que contarte' },
 ];
 ---
 <Layout title="Contact — Wasted Talent" description="¿Tienes un problema interesante? Escríbele a Diego López.">
-  <section class="relative grain px-6 py-24 max-w-xl mx-auto text-center">
-    <p class="font-mono text-xs text-accent-light mb-4">// 04 — contacto</p>
-    <h1 class="glitch font-display text-4xl mb-4" data-text="¿Tienes un problema interesante?">
-      ¿Tienes un problema interesante?
-    </h1>
+  <section class="relative grain px-6 py-24 max-w-2xl mx-auto text-center">
+  <p class="font-mono text-xs text-accent-light mb-4">// 04 — contacto</p>
+    <div class="w-fit max-w-full mx-auto text-left mb-4">
+      <h1 class="typewriter font-mono text-xl sm:text-2xl">
+        ¿Tienes un problema interesante?
+      </h1>
+    </div>
     <p class="text-muted mb-10">
-      Cuéntame qué estás tratando de resolver. Tambien estoy abierto a ofertas laborales.
+      Elige de qué se trata, o simplemente escríbeme directo.
     </p>
+    <a 
+      href={`mailto:devdiego.lm@gmail.com?subject=${encodeURIComponent('Oportunidad laboral / vacante')}`}
+      class="block bg-accent text-black px-5 py-3 text-sm font-medium mb-3 hover:bg-accent-soft transition-colors duration-150"
+    >
+      ¿Buscas contratar o tienes una vacante?
+    </a>
+
+    <div class="flex flex-col gap-3 mb-10">
+      {problemTypes.map(option => (
+        <a
+          href={`mailto:devdiego.lm@gmail.com?subject=${encodeURIComponent(option.subject)}`}
+          class="border border-accent-light/30 px-5 py-3 text-sm hover:border-accent hover:text-accent transition-colors duration-150"
+        >
+          {option.label}
+        </a>
+      ))}
+    </div>
+
     <div class="flex justify-center gap-4 flex-wrap mb-12">
-      <Button href="mailto:devdiego.lm@gmail.com">Escríbeme</Button>
-      <Button href={`${base}cv.pdf`} variant="secondary">Descargar CV</Button>
+      <a href="mailto:devdiego.lm@gmail.com" class="font-mono text-xs text-accent-soft hover:text-accent transition-colors duration-150">
+        o escríbeme directo: devdiego.lm@gmail.com
+      </a>
     </div>
 
     <div class="border-t border-accent-light/20 pt-8">
-      <p class="font-mono text-xs text-muted mb-4">// también aquí</p>
-      <div class="flex justify-center gap-6 text-sm">
+      <a href={`${base}cv.pdf`} class="font-mono text-xs text-muted hover:text-accent-light transition-colors duration-150">
+        // descargar CV
+      </a>
+      <div class="flex justify-center gap-6 text-sm mt-6">
         {socials.map(social => (
           <a href={social.href} class="hover:text-accent transition-colors duration-150">
             {social.label}

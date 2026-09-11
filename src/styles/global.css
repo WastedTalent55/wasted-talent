@@ -115,3 +115,28 @@ button:focus-visible {
     drop-shadow(-3px 0 var(--color-accent-light))
     drop-shadow(0 2px var(--color-accent-soft));
 }
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--color-accent);
+  width: 0;
+  animation:
+    typing 2s steps(33, end) forwards,
+    blink-caret 0.75s step-end infinite;
+}
+@keyframes typing {
+  from { width: 0; }
+  to { width: 33ch; }
+}
+@keyframes blink-caret {
+  50% { border-color: transparent; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typewriter {
+    animation: none;
+    width: 100%;
+    border-right: none;
+  }
+}
