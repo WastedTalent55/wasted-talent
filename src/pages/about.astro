@@ -1,5 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SectionRail from '../components/SectionRail.astro';
+
+const sections = [
+  { id: 'intro', label: 'Intro' },
+  { id: 'handyqueer', label: 'HandyQueer' },
+  { id: 'aprendizaje', label: 'Aprendizaje' },
+  { id: 'stack', label: 'Stack' },
+  { id: 'cierre', label: 'Cierre' },
+];
 
 const learned = [
   {
@@ -42,18 +51,19 @@ const stack = [
 ];
 ---
 <Layout title="About — Wasted Talent" description="La historia de Diego López: de sobrevivir con lo que fuera, a construir con las manos, a enamorarse tarde de programar.">
+  <SectionRail sections={sections} />
   <section class="relative grain px-6 py-20 max-w-3xl mx-auto">
     <p class="font-mono text-xs text-accent-light mb-3">// 05 — about</p>
     <h1 class="glitch font-display text-4xl mb-10" data-text="About">Muchos oficios. La misma pregunta.</h1>
 
-    <div class="space-y-5 text-cream/90 leading-relaxed mb-16">
+    <div id="intro" class="space-y-5 text-cream/90 leading-relaxed mb-16">
       <p>Siempre me ha dado curiosidad entender cómo funcionan las cosas. No solo saber hacerlas, sino descubrir qué hay detrás, por qué se hacen de cierta manera y qué podría hacerse distinto.</p>
       <p>Mi camino no ha sido precisamente lineal. He pasado por restaurantes y hoteles, producción audiovisual, construcción y remodelación. Son mundos muy diferentes, pero en todos terminé haciendo algo parecido: resolver problemas, aprender y ordenar procesos, encontrar soluciones cuando algo no sale como estaba previsto y aprender lo necesario para seguir adelante.</p>
       <p>La programación apareció después y me enamoro, encontré ahí una herramienta que encajaba con esa forma de pensar. Ahora puedo pasar de identificar un problema a diseñar y construir una solución, desde la interfaz y la experiencia de usuario hasta la lógica, las APIs y la base de datos.</p>
       <p>Programar terminó haciendo clic porque me permitió llevar esa forma de pensar mucho más lejos. En lugar de adaptar una solución con lo que tenía a la mano, podía construir la herramienta.</p>
     </div>
 
-    <div class="border-t border-accent-light/20 pt-12 mb-16">
+    <div id="handyqueer" class="border-t border-accent-light/20 pt-12 mb-16">
       <p class="font-mono text-xs text-accent-light mb-3">// handyqueer</p>
       <h2 class="font-display text-2xl mb-5">HandyQueer</h2>
       <div class="space-y-5 text-cream/90 leading-relaxed">
@@ -63,7 +73,7 @@ const stack = [
       </div>
     </div>
 
-    <div class="mb-16">
+    <div id="aprendizaje" class="mb-16">
       <p class="font-mono text-xs text-accent-light mb-3">// 06 — de dónde saco esto</p>
       <h2 class="font-display text-2xl mb-8">Cosas que me enseñaron a resolver problemas</h2>
       <div class="grid sm:grid-cols-2 gap-4">
@@ -79,7 +89,7 @@ const stack = [
       <p class="font-mono text-sm text-cream/80 mt-8 text-center">Las herramientas cambian. La forma de pensar no.</p>
     </div>
 
-    <div class="mb-16">
+    <div id="stack" class="mb-16">
       <p class="font-mono text-xs text-accent-light mb-3">// stack</p>
       <div class="grid sm:grid-cols-2 gap-6">
         {stack.map(group => (
@@ -95,7 +105,7 @@ const stack = [
       </div>
     </div>
 
-    <div class="border-t border-accent-light/20 pt-12">
+    <div id="cierre" class="border-t border-accent-light/20 pt-12">
       <h2 class="font-display text-2xl mb-4">Entonces, ¿qué hago?</h2>
       <p class="text-cream/90 leading-relaxed mb-1">Construyo cosas para resolver problemas.</p>
       <p class="text-muted mb-1">A veces es una aplicación.</p>

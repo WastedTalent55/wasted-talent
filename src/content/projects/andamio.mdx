@@ -11,14 +11,14 @@ import FlowDiagram from '../../components/FlowDiagram.astro';
 import StatPanel from '../../components/StatPanel.astro';
 import ProjectImage from '../../components/ProjectImage.astro';
 
-## El problema 
+<h2 id="problema" class="decode-text">El problema</h2>
 Mientras trabajaba por mi cuenta en proyectos de remodelación, gran parte de la información terminaba dispersa entre conversaciones de WhatsApp, notas y archivos. Las solicitudes de los clientes, medidas, materiales, precios, cotizaciones y avances podían quedar en lugares diferentes.
 
 Además, crear una cotización significaba repetir información manualmente y actualizar precios podía convertirse rápidamente en un problema.
 
 Andamio nació de esa experiencia: quería construir una herramienta que ayudara a convertir el trabajo informal y disperso en un flujo más organizado, desde el primer contacto con un cliente hasta la ejecución del proyecto.
 
-## Qué construí
+<h2 id="construccion" class="decode-text">Qué construí</h2>
 Andamio centraliza el flujo de trabajo de un proyecto en una sola aplicación.
 El sistema permite registrar clientes y sus direcciones, agendar evaluaciones de trabajo, organizar proyectos mediante un tablero Kanban y generar cotizaciones a partir de la información recopilada durante el proceso.
 
@@ -48,7 +48,7 @@ La idea es que el flujo sea continuo:
 
 En lugar de tener información repartida entre chats, notas y documentos, cada etapa queda relacionada dentro de la aplicación.
 
-## Decisiones técnicas
+<h2 id="decisiones" class="decode-text">Decisiones técnicas</h2>
 Elegí Angular para el frontend porque quería trabajar con una arquitectura estructurada y componentes reutilizables, además de profundizar en TypeScript y en la construcción de aplicaciones más grandes que una página web tradicional.
 
 Para el backend utilicé Node.js y Express, creando una API REST para manejar autenticación, clientes, evaluaciones, cotizaciones y proyectos.
@@ -60,7 +60,7 @@ Uno de los retos más interesantes fue conectar todas estas piezas sin perder la
 ## Estado actual
 Sigue en desarrollo activo. Todavía no tiene demo pública, pero puedes revisar el código y la evolución del proyecto en el repositorio.
 
-## Qué aprendí
+<h2 id="aprendizaje" class="decode-text">Qué aprendí</h2>
 Andamio me enseñó que construir una aplicación no empieza necesariamente con una tecnología, sino con un problema que vale la pena resolver.
 
 También fue uno de mis primeros proyectos en los que tuve que pensar más allá de una interfaz: diseñar una base de datos relacional, construir una API, conectar diferentes módulos y mantener un flujo de información coherente entre ellos.

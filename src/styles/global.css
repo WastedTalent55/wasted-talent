@@ -116,6 +116,12 @@ button:focus-visible {
     drop-shadow(0 2px var(--color-accent-soft));
 }
 
+.glass-panel {
+  background: rgba(30, 30, 30, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
 .typewriter {
   overflow: hidden;
   white-space: nowrap;

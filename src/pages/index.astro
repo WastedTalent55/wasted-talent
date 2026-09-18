@@ -9,18 +9,22 @@ const andamio = (await getCollection('projects')).find(p => p.id === 'andamio');
 <Layout title="Wasted Talent — Diego López" description="Portafolio de Diego López. Construyendo Andamio y otros proyectos mientras aprende desarrollo web.">
   <section class="relative grain px-6 py-24 max-w-6xl mx-auto grid lg:grid-cols-[1.3fr_1fr] gap-12 items-start">
     <div>
-      <h1 class="font-display text-4xl sm:text-5xl leading-tight mb-4">
+      <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.95] mb-6">
         Hola! <span class="glitch" data-text="Soy Diego">Soy Diego</span>, convierto problemas en software que funciona.
       </h1>
       <p class="text-muted text-lg">
         Desarrollo aplicaciones web y soluciones digitales para resolver problemas reales, desde la interfaz hasta el backend y la base de datos.
         Me interesa entender cómo funciona un problema antes de escribir código, encontrar qué puede hacerse mejor y construir una solución que sea útil, clara y sostenible.
-        Angular · TypeScript · React · Node.js · Express · MySQL
+        <div class="flex flex-wrap gap-2">
+          {['Angular', 'TypeScript', 'React', 'Node.js', 'Express', 'MySQL'].map(tech => (
+            <span class="text-xs font-mono border border-accent-soft/40 text-accent-soft px-2 py-1">{tech}</span>
+          ))}
+        </div>
       </p>
     </div>
 
     <div class="hidden lg:flex lg:flex-col gap-6">
-  <div class="border border-accent-light/30 p-6 font-mono text-xs text-muted">
+  <div class="glass-panel border border-accent-light/30 p-6 font-mono text-xs text-muted">
     <p class="text-accent-soft mb-3">// status</p>
     <p class="mb-1">curiosidad: <span class="text-cream">activa</span></p>
     <p class="mb-1">proyecto_actual: <span class="text-cream">andamio</span></p>
@@ -39,7 +43,7 @@ const andamio = (await getCollection('projects')).find(p => p.id === 'andamio');
     <section class="px-6 py-12 max-w-3xl">
       <a href={`${base}andamio`} class="block border border-muted/20 p-6 hover:border-accent transition-colors duration-150">
         <p class="font-mono text-xs text-accent-light mb-2">// 01 — proyecto actual</p>
-        <h2 class="font-display text-2xl mb-2">{andamio.data.title}</h2>
+        <h2 class="font-display text-2xl mb-2" transition:name="andamio-title">{andamio.data.title}</h2>
         <p class="text-muted">{andamio.data.summary}</p>
       </a>
     </section>

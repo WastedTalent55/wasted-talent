@@ -1,0 +1,52 @@
+---
+interface Section { id: string; label: string; }
+interface Props { sections: Section[]; }
+const { sections } = Astro.props;
+---
+<nav class="section-rail hidden lg:flex fixed left-6 top-1/2 -translate-y-1/2 flex-col gap-4 z-40">
+  <div class="absolute left-[3px] top-0 bottom-0 w-[1px] bg-accent-light/20"></div>
+  <div id="rail-progress" class="absolute left-[3px] top-0 w-[1px] bg-accent" style="height: 0%"></div>
+  {sections.map(s => (
+    <a href={`#${s.id}`} data-rail-target={s.id} class="rail-item flex items-center gap-2 group">
+      <span class="rail-dot w-2 h-2 border border-accent-light/40 transition-all duration-300"></span>
+      <span class="rail-label font-mono text-xs text-muted opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">{s.label}</span>
+    </a>
+  ))}
+</nav>
+
+<script>
+  const sections = document.querySelectorAll('[data-rail-target]');
+  const targets = Array.from(sections).map(el => {
+    const id = el.getAttribute('data-rail-target');
+    return { el, section: document.getElementById(id!) };
+  }).filter(t => t.section);
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const match = targets.find(t => t.section === entry.target);
+        if (!match) return;
+        const dot = match.el.querySelector('.rail-dot');
+        const label = match.el.querySelector('.rail-label');
+        if (entry.isIntersecting) {
+          dot?.classList.add('bg-accent', 'border-accent');
+          label?.classList.add('opacity-100', 'text-accent');
+        } else {
+          dot?.classList.remove('bg-accent', 'border-accent');
+          label?.classList.remove('opacity-100', 'text-accent');
+        }
+      });
+    },
+    { rootMargin: '-40% 0px -40% 0px' }
+  );
+
+  targets.forEach(t => t.section && observer.observe(t.section));
+
+  window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  const bar = document.getElementById('rail-progress');
+  if (bar) bar.style.height = `${progress}%`;
+});
+</script>

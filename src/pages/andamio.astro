@@ -3,22 +3,34 @@ import { getEntry, render, type CollectionEntry } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import FlowDiagram from '../components/FlowDiagram.astro';
+import SectionRail from '../components/SectionRail.astro';
 
 const project = await getEntry('projects', 'andamio') as CollectionEntry<'projects'>;
 const { Content } = await render(project);
+
+const sections = [
+  { id: 'problema', label: 'El problema' },
+  { id: 'construccion', label: 'Qué construí' },
+  { id: 'decisiones', label: 'Decisiones' },
+  { id: 'aprendizaje', label: 'Qué aprendí' },
+];
 ---
 <Layout title="Andamio — Wasted Talent" description="Una app para organizar cotizaciones y proyectos de remodelación freelance. Construida con Angular, Node.js y MySQL.">
+  <SectionRail sections={sections} />
   <section class="px-6 py-16 max-w-3xl mx-auto">
-    <h1 class="font-display text-4xl mb-2">{project.data.title}</h1>
-    <p class="text-muted mb-4">{project.data.summary}</p>
-    <div class="flex gap-2 flex-wrap mb-8">
-      {project.data.tags.map((tag: string) => (
-        <span class="text-xs border border-accent-soft/40 text-accent-soft px-2 py-1">{tag}</span>
-      ))}
-    </div>
-    {project.data.repoUrl && (
-      <Button href={project.data.repoUrl} variant="secondary">Ver repositorio</Button>
-    )}
+    <p class="font-mono text-xs text-accent-light mb-3">// proyecto actual</p>
+    <h1 class="font-display text-5xl sm:text-6xl leading-[0.95] mb-4" transition:name="andamio-title">{project.data.title}</h1>
+    <p class="text-muted text-lg mb-4">{project.data.summary}</p>
+    <div class="glass-panel border border-accent-light/30 p-5 mb-10 inline-block">
+  <div class="flex gap-2 flex-wrap mb-4">
+    {project.data.tags.map((tag: string) => (
+      <span class="text-xs font-mono border border-accent-soft/40 text-accent-soft px-2 py-1">{tag}</span>
+    ))}
+  </div>
+  {project.data.repoUrl && (
+    <Button href={project.data.repoUrl} variant="secondary">Ver repositorio</Button>
+  )}
+</div>
     <article class="prose prose-invert mt-10 max-w-none">
       <Content />
     </article>
