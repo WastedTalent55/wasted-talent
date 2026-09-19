@@ -8,7 +8,7 @@ const links = [
   { href: 'contact', label: 'Contact' },
 ];
 ---
-<nav class="relative flex justify-between items-center px-6 py-5 border-b border-muted/20">
+<nav class="relative z-50 flex justify-between items-center px-6 py-5 border-b border-muted/20">
   <a href={base} class="flex items-center gap-2">
     <img src={`${base}nav-icon.png`} alt="Wasted Talent" class="h-9 w-9" />
   </a>
@@ -52,17 +52,24 @@ const links = [
 </nav>
 
 <script>
-  const toggle = document.getElementById('nav-toggle');
-  const mobileMenu = document.getElementById('nav-mobile');
-  const iconOpen = document.getElementById('icon-open');
-  const iconClose = document.getElementById('icon-close');
+  function initNav() {
+    const toggle = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('nav-mobile');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
 
-  toggle?.addEventListener('click', () => {
-    const isOpen = mobileMenu?.classList.contains('flex');
-    mobileMenu?.classList.toggle('hidden', isOpen);
-    mobileMenu?.classList.toggle('flex', !isOpen);
-    iconOpen?.classList.toggle('hidden', !isOpen);
-    iconClose?.classList.toggle('hidden', isOpen);
-    toggle?.setAttribute('aria-expanded', String(!isOpen));
-  });
+    if (!toggle || !mobileMenu) return;
+
+    toggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('flex');
+      mobileMenu.classList.toggle('hidden', isOpen);
+      mobileMenu.classList.toggle('flex', !isOpen);
+      iconOpen?.classList.toggle('hidden', !isOpen);
+      iconClose?.classList.toggle('hidden', isOpen);
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Abrir menú' : 'Cerrar menú');
+    });
+  }
+
+  document.addEventListener('astro:page-load', initNav);
 </script>
